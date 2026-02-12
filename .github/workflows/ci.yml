@@ -31,8 +31,7 @@ jobs:
         uses: dbelyaev/action-checkstyle@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          level: warning
-          reporter: local
+          level: info
 
       - name: Build and Test
         run: ./gradlew build
