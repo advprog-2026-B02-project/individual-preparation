@@ -27,8 +27,11 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Run PMD Linter
-        run: ./gradlew pmdMain
+      - name: Run Checkstyle
+        uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: error
 
       - name: Build and Test
         run: ./gradlew build
