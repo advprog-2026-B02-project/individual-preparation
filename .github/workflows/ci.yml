@@ -28,7 +28,13 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run Checkstyle
-        run: ./gradlew checkstyleMain checkstyleTest || true
+        uses: dbelyaev/action-checkstyle@master
+        continue-on-error: true
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: warning
+          reporter: github-check
+          checkstyle_config: google_checks.xml
 
       - name: Build and Test
         run: ./gradlew build
