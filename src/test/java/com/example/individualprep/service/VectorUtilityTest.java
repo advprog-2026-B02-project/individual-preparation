@@ -1,6 +1,7 @@
 package com.example.individualprep.service;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class VectorUtilityTest {
@@ -18,7 +19,18 @@ class VectorUtilityTest {
 
     @Test
     void testMultiply() {
-        // TODO: Implement test for multiply(v1, x)
+        double[] v1 = {1.0, 2.0, 3.0};
+        double[] expected1 = {2.0, 4.0, 6.0};
+        assertArrayEquals(expected1, vector.multiply(v1, 2), "vektor dikali skalar 2");
+
+        double[] expected2 = {0.0, 0.0, 0.0};
+        assertArrayEquals(expected2, vector.multiply(v1, 0), "vektor dikali skalar 0");
+
+        double[] expected3 = {-1.0, -2.0, -3.0};
+        assertArrayEquals(expected3, vector.multiply(v1, -1), "Vektor dikali skalar -1");
+
+        double[] emptyV = {};
+        assertArrayEquals(new double[]{}, vector.multiply(emptyV, 5), "vektor kosong dikali skalar");
     }
 
     @Test
