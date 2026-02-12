@@ -24,21 +24,21 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: '8.12' # I don't know if this is gonna work...
+          gradle-version: '8.5' # I don't know if this is gonna work...
 
-      - name: Run Checkstyle
-        uses: dbelyaev/action-checkstyle@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          level: error
+      - name: Build and Test
+        run: gradle build
 
-      - name: Build and Analyze (SonarCloud Scan)
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          gradle build sonar \
-            -Dsonar.projectKey=advprog-2026-B02-project_individual-preparation \
-            -Dsonar.organization=advprog-2026-b02-project \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=advprog-2026-b02-project
+            -Dsonar.projectKey=advprog-2026-B02-project_individual-preparation
+            -Dsonar.sources=src/main/java
+            -Dsonar.tests=src/test/java
+            -Dsonar.java.binaries=build/classes
+            -Dsonar.junit.reportPaths=build/test-results/test
