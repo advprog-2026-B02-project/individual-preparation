@@ -30,6 +30,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: error
 
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       - name: Build and Test
         run: ./gradlew build
 
