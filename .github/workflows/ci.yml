@@ -24,7 +24,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: '8.5' # I don't know if this is gonna work...
+          gradle-version: '8.12' # I don't know if this is gonna work...
 
       - name: Run Checkstyle
         uses: dbelyaev/action-checkstyle@master
