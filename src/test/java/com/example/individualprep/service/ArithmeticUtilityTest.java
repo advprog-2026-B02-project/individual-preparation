@@ -58,6 +58,10 @@ class ArithmeticUtilityTest {
 
     @Test
     void testExponent() {
-        // TODO: Implement test for exponent(o1, n)
+        assertEquals(100.0, arithmetic.exponent(10.0, 2), "10 ^ 2 harus 100");
+        assertEquals(49.0, arithmetic.exponent(7.0, 2), "7 ^ 2 harus 49");
+        assertEquals(0.5, arithmetic.exponent(2, -1), "2^-1 harus 0.5");
+        assertEquals(0.25, arithmetic.exponent(2, -2), "2^-2 harus 0.25");
+        assertEquals(1.0, arithmetic.exponent(1,0), "1^0 harus 1");
     }
 }
