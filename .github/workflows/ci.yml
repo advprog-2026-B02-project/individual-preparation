@@ -37,7 +37,7 @@ jobs:
           checkstyle_config: google_checks.xml
 
       - name: Build and Test
-        run: ./gradlew build
+        run: ./gradlew build jacocoTestReport
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
