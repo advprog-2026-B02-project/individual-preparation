@@ -36,8 +36,19 @@ jobs:
           reporter: github-check
           checkstyle_config: google_checks.xml
 
-      - name: Build, Test and Analyze
+      - name: Build and Test
+        run: ./gradlew build jacocoTestReport
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew build jacocoTestReport sonar
+        with:
+          args: >
+            -Dsonar.organization=advprog-2026-b02-project
+            -Dsonar.projectKey=advprog-2026-B02-project_individual-preparation
+            -Dsonar.sources=src/main/java
+            -Dsonar.tests=src/test/java
+            -Dsonar.java.binaries=build/classes
+            -Dsonar.junit.reportPaths=build/test-results/test
