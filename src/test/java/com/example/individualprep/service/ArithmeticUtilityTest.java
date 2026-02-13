@@ -52,8 +52,17 @@ class ArithmeticUtilityTest {
 
     @Test
     void testDivide() {
-        // TODO: Implement test for divide(o1, o2)
-        // Hint: divide by zero!
+        assertEquals(2.0, arithmetic.divide(10.0, 5.0), "10 / 5 harus 2");
+
+        assertEquals(-2.0, arithmetic.divide(-10.0, 5.0), "-10 / 5 harus -2");
+        assertEquals(2.0, arithmetic.divide(-10.0, -5.0), "-10 / -5 harus 2");
+
+        assertEquals(0.0, arithmetic.divide(0.0, 5.0), "0 / 5 harus 0");
+        assertEquals(0.5, arithmetic.divide(1.0, 2.0), "1 / 2 harus 0.5");
+
+        assertEquals(Double.POSITIVE_INFINITY, arithmetic.divide(10.0, 0.0), "10 / 0 harus infinity");
+        assertEquals(Double.NEGATIVE_INFINITY, arithmetic.divide(-10.0, 0.0), "-10 / 0 harus -infinity");
+        assertTrue(Double.isNaN(arithmetic.divide(0.0, 0.0)), "0 / 0 harus NaN");
     }
 
     @Test
