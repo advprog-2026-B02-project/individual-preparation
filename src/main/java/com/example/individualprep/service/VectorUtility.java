@@ -6,13 +6,14 @@ import org.springframework.stereotype.Service;
 public class VectorUtility {
     
     public double[] add(double[] v1, double[] v2) {
-        int maxLength = Math.max(v1.length, v2.length);
-        double[] result = new double[maxLength];
+        if (v1.length != v2.length) {
+            throw new IllegalArgumentException();
+        }
 
-        for (int i = 0; i < maxLength; i++) {
-            double val1 = (i < v1.length) ? v1[i] : 0;
-            double val2 = (i < v2.length) ? v2[i] : 0;
-            result[i] = val1 + val2;
+        double[] result = new double[v1.length];
+
+        for (int i = 0; i < v1.length; i++) {
+            result[i] = v1[i] + v2[i];
         }
         return result;
     }
