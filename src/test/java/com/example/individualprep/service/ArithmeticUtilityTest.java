@@ -24,7 +24,17 @@ class ArithmeticUtilityTest {
 
     @Test
     void testSubtract() {
-        // TODO: Implement test for subtract(o1, o2)
+        assertEquals(5.0, arithmetic.subtract(10.0, 5.0), "10 - 5 harus 5");
+
+        assertEquals(2.0, arithmetic.subtract(-3.0, -5.0), "-3 - (-5) harus 2");
+
+        assertEquals(15.0, arithmetic.subtract(10.0, -5.0), "10 - (-5) harus 15");
+        assertEquals(8.0, arithmetic.subtract(3.0, -5.0), "3 - (-5) harus 8");
+
+        assertEquals(99.0, arithmetic.subtract(99.0, 0.0), "99 - 0 harus 99");
+        assertEquals(0.0, arithmetic.subtract(0.0, 0.0), "0 - 0 harus 0");
+
+        assertEquals(0.25, arithmetic.subtract(0.5, 0.25), "0.5 - 0.25 harus 0.25");
     }
 
     @Test
@@ -37,7 +47,7 @@ class ArithmeticUtilityTest {
         assertEquals(0.0, arithmetic.multiply(0.0, 99.0), "0 * 99 harus 0");
         assertEquals(0.0, arithmetic.multiply(99.0, 0.0), "99 * 0 harus 0");
 
-        assertEquals(0.25, arithmetic.multiply(0.5, 0.5), "0.5 * 0.5 harus 0.25");
+        assertEquals(0.25, arithmetic.multiply(0.5, 0.5), 1e-9, "0.5 * 0.5 harus 0.25");
     }
 
     @Test
