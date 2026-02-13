@@ -14,7 +14,26 @@ class VectorUtilityTest {
 
     @Test
     void testSubtract() {
-        // TODO: Implement test for subtract(v1, v2)
+        double[] v1 = {1.0, 2.0, 3.0};
+        double[] v2 = {4.0, 5.0, 6.0};
+        double[] expected1 = {-3.0, -3.0, -3.0};
+        assertArrayEquals(expected1, vector.subtract(v1, v2), "Vektor dikurangi vektor");
+
+        double[] v3 = {-1.0, -2.0, -3.0};
+        double[] v4 = {-4.0, -5.0, -6.0};
+        double[] expected2 = {3.0, 3.0, 3.0};
+        assertArrayEquals(expected2, vector.subtract(v3, v4), "Vektor negatif dikurangi vektor negatif");
+
+        double[] v5 = {0.0, 0.0, 0.0};
+        double[] expected3 = {1.0, 2.0, 3.0};
+        assertArrayEquals(expected3, vector.subtract(v1, v5), "Vektor dikurangi vektor kosong");
+
+        double[] expected4 = {0.0, 0.0, 0.0};
+        assertArrayEquals(expected4, vector.subtract(v1, v1), "Vektor dikurangi vektor sama dengan sendiri");
+
+        double[] v6 = {1.0, 2.0};
+        double[] v7 = {3.0, 4.0, 5.0};
+        assertThrows(IllegalArgumentException.class, () -> vector.subtract(v6, v7));
     }
 
     @Test
