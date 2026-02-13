@@ -35,7 +35,25 @@ class VectorUtilityTest {
 
     @Test
     void testDotProduct() {
-        // TODO: Implement test for dotProduct(v1, v2)
+        double[] v1 = {1.0, 2.0, 3.0};
+        double[] v2 = {4.0, 5.0, 6.0};
+        double result1 = vector.dotProduct(v1, v2);
+        assertEquals(32.0, result1, 1e-9);
+
+        double[] v3 = {};
+        double[] v4 = {};
+        double result2 = vector.dotProduct(v3, v4);
+        assertEquals(0.0, result2, 1e-9);
+
+        double[] v5 = {1.0};
+        assertThrows(IllegalArgumentException.class, () -> vector.dotProduct(null, v5));
+
+        double[] v6 = {1.0};
+        assertThrows(IllegalArgumentException.class, () -> vector.dotProduct(v6, null));
+
+        double[] v7 = {1.0, 2.0};
+        double[] v8 = {3.0};
+        assertThrows(IllegalArgumentException.class, () -> vector.dotProduct(v7, v8));
     }
 
     @Test
