@@ -9,7 +9,25 @@ class VectorUtilityTest {
 
     @Test
     void testAdd() {
-        // TODO: Implement test for add(v1, v2)
+        double[] v1 = {1.0, 2.0, 3.0};
+        double[] v2 = {4.0, 5.0, 6.0};
+        double[] expected1 = {5.0, 7.0, 9.0};
+        assertArrayEquals(expected1, vector.add(v1, v2), "Vektor ditambah vektor");
+
+        double[] v3 = {-1.0, -2.0, -3.0};
+        double[] v4 = {-4.0, -5.0, -6.0};
+        double[] expected2 = {-5.0, -7.0, -9.0};
+        assertArrayEquals(expected2, vector.add(v3, v4), "Vektor negatif ditambah vektor negatif");
+
+        double[] v5 = {0.0, 0.0, 0.0};
+        double[] expected3 = {1.0, 2.0, 3.0};
+        assertArrayEquals(expected3, vector.add(v1, v5), "Vektor ditambah vektor kosong");
+
+        double[] expected4 = {0.0, 0.0, 0.0};
+        assertArrayEquals(expected4, vector.add(v1, v3), "Vektor positif ditambah vektor negatif");
+        double[] v6 = {1.0, 2.0};
+        double[] v7 = {3.0, 4.0, 5.0};
+        assertThrows(IllegalArgumentException.class, () -> vector.add(v6, v7));
     }
 
     @Test
@@ -29,7 +47,7 @@ class VectorUtilityTest {
         assertArrayEquals(expected3, vector.subtract(v1, v5), "Vektor dikurangi vektor kosong");
 
         double[] expected4 = {0.0, 0.0, 0.0};
-        assertArrayEquals(expected4, vector.subtract(v1, v1), "Vektor dikurangi vektor sama dengan sendiri");
+        assertArrayEquals(expected4, vector.subtract(v1, v1), "Vektor ditambah vektor sama dengan sendiri");
 
         double[] v6 = {1.0, 2.0};
         double[] v7 = {3.0, 4.0, 5.0};
