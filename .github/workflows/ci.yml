@@ -2,7 +2,7 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "feat/setup-cicd-personD" ]
   pull_request:
     branches: [ "main" ]
 
@@ -40,6 +40,7 @@ jobs:
         run: ./gradlew build
 
       - name: SonarCloud Scan
+        if: ${{ secrets.SONAR_TOKEN != '' }}
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
